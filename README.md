@@ -24,15 +24,12 @@ The MCP servers in this demo highlight how each tool can light up widgets by com
 - `src/` – Source for each widget example.
 - `assets/` – Generated HTML, JS, and CSS bundles after running the build step.
 - `pizzaz_server_node/` – MCP server implemented with the official TypeScript SDK.
-- `pizzaz_server_python/` – Python MCP server that returns the Pizzaz widgets.
-- `solar-system_server_python/` – Python MCP server for the 3D solar system widget.
 - `build-all.mts` – Vite build orchestrator that produces hashed bundles for every widget entrypoint.
 
 ## Prerequisites
 
 - Node.js 18+
 - pnpm (recommended) or npm/yarn
-- Python 3.10+ (for the Python MCP server)
 
 ## Install dependencies
 
@@ -70,14 +67,9 @@ pnpm run serve
 
 The assets are exposed at [`http://localhost:4444`](http://localhost:4444) with CORS enabled so that local tooling (including MCP inspectors) can fetch them.
 
-## Run the MCP servers
+## Run the MCP server
 
-The repository ships several demo MCP servers that highlight different widget bundles:
-
-- **Pizzaz (Node & Python)** – pizza-inspired collection of tools and components
-- **Solar system (Python)** – 3D solar system viewer
-
-Every tool response includes plain text content, structured JSON, and `_meta.openai/outputTemplate` metadata so the Apps SDK can hydrate the matching widget.
+This repository includes a demo MCP server implemented with the official TypeScript SDK that highlights different widget bundles. Every tool response includes plain text content, structured JSON, and `_meta.openai/outputTemplate` metadata so the Apps SDK can hydrate the matching widget.
 
 ### Pizzaz Node server
 
@@ -85,26 +77,6 @@ Every tool response includes plain text content, structured JSON, and `_meta.ope
 cd pizzaz_server_node
 pnpm start
 ```
-
-### Pizzaz Python server
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r pizzaz_server_python/requirements.txt
-uvicorn pizzaz_server_python.main:app --port 8000
-```
-
-### Solar system Python server
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r solar-system_server_python/requirements.txt
-uvicorn solar-system_server_python.main:app --port 8000
-```
-
-You can reuse the same virtual environment for all Python servers—install the dependencies once and run whichever entry point you need.
 
 ## Testing in ChatGPT
 
@@ -132,7 +104,7 @@ You can then invoke tools by asking something related. For example, for the Pizz
 
 ## Next steps
 
-- Customize the widget data: edit the handlers in `pizzaz_server_node/src`, `pizzaz_server_python/main.py`, or the solar system server to fetch data from your systems.
+- Customize the widget data: edit the handlers in `pizzaz_server_node/src` to fetch data from your systems.
 - Create your own components and add them to the gallery: drop new entries into `src/` and they will be picked up automatically by the build script.
 
 ### Deploy your MCP server
