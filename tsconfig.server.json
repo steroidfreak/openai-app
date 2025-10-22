@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "dist/server",
+    "rootDir": "src/server",
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "baseUrl": "."
+  },
+  "include": ["src/server/**/*.ts", "src/types/**/*.d.ts"]
+}

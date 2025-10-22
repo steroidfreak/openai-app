@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "dist/client",
+    "rootDir": "src/client",
+    "jsx": "preserve"
+  },
+  "include": ["src/client/**/*.ts"]
+}
